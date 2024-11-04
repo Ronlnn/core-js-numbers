@@ -108,8 +108,15 @@ function getLinearEquationRoot(a, b) {
  *   (0,-1) (1,0)    => π/2
  *   (0,1) (0,1)     => 0
  */
-function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
-  throw new Error('Not implemented');
+function getAngleBetweenVectors(x1, y1, x2, y2) {
+  const sum = x1 * x2 + y1 * y2;
+  const vecLen1 = Math.sqrt(x1 ** 2 + x2 ** 2);
+  const vecLen2 = Math.sqrt(y1 ** 2 + y2 ** 2);
+  const cos = sum / (vecLen1 * vecLen2);
+  if (vecLen1 === 0 || vecLen2 === 0) {
+    return NaN;
+  }
+  return Math.acos(cos);
 }
 
 /**
